@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Istok+Web&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<!-- wrapper/console-->
+<div class="wrapper" >
+
+    <!-- screen -->
+        <!-- messages -->
+    <div id="screen">
+        <div id="header">
+            <p id="headername"><i class="fas fa-robot fa-lg"></i>ChatBot</p>     
+        </div>
+    </div> 
+
+    <!-- input box -->
+    <div class="bottomSection">
+        <div class="input">
+                        <!-- input -->
+                            <textarea class ="textArea" type="text" id="input" style="font-size: 14px; font-family: 'Istok Web', sans-serif;"></textarea>   
+        </div>
+         <!-- button -->
+        <div class="button">
+            <input type="submit" id="send" value="Send" >
+        </div>
+    </div>
+
+    <script> 
+    $(document).ready(function() {
+
+        setTimeout( function() {
+            chatBotMessage()
+            }, 1000);
+
+        $("#send").click(function() {
+            // perform function when you click
+            newTextMessage(); 
+
+            //delete message from input box once you send it
+            $("textarea").val('');
+
+            setTimeout( function() {
+                loadingBubble()
+                scrollToBottom("screen");
+            }, 1000);
+
+            setTimeout( function() {
+                $(".circle-holder").remove();
+            }, 2000)
+            scrollToBottom("screen");
+
+            //send bot message 2 seconds after you click 'send' button
+            setTimeout( function() {
+                chatBotMessage();
+                scrollToBottom("screen");
+            }, 2005);
+
+            
+        });
+    });
+    </script>
+    
+<script src="script.js"></script>
+</div>
+</body>
+</html>
+
+
+
+
+
